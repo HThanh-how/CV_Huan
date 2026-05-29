@@ -1,6 +1,6 @@
 \section{Summary}
 \begin{onecolentry}
-    Backend Engineer with 2+ years of experience designing and operating high-throughput, distributed systems for \textbf{fintech/payments} and \textbf{ERP / order-management} domains. Strong in API design, event-driven architecture, data consistency, and cloud-native deployment. Comfortable owning a service end-to-end: from domain modeling and database design to observability, performance tuning, and CI/CD.
+    Backend Engineer with 2+ years of experience designing, building, and operating high-throughput distributed systems for \textbf{fintech/payments} and \textbf{ERP / order-management} domains. I own services end-to-end — from domain modeling, API design, and database architecture to performance tuning, observability, security, and CI/CD. Comfortable working across the stack but deeply specialized in backend: data consistency, concurrency, event-driven architecture, and cloud-native deployment. I care about correctness, measurable performance, and code that scales with the team as well as the traffic.
 \end{onecolentry}
 
 
@@ -16,13 +16,17 @@
 % --- TMA Solutions (Current) ---
 \begin{twocolentry}{\textit{Jan 2026 -- Present}}
     \textbf{TMA Solutions} \\[4pt]
-    \textit{Backend Engineer}
+    \textit{Backend Engineer — ERP / Warehouse Management}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Designed and implemented \textbf{warehouse-level authorization} (RBAC/ABAC) for a multi-warehouse ERP, enforcing fine-grained row-level access control to guarantee secure, tenant-isolated inventory and accounting data
-        \item Modeled core ERP domains (inventory, stock movements, ledger entries) with transactional integrity, ensuring auditable and reconcilable records across warehouses
-        \item Embedded AI-assisted code review (Claude Code) into the development workflow for automated requirement analysis and architectural validation, raising code quality and review throughput
+        \item Architected and shipped the \textbf{authorization core} of a multi-warehouse ERP — a fine-grained \textbf{RBAC/ABAC} model enforcing row-level, tenant-isolated access across inventory, stock movements, and accounting data, eliminating an entire class of cross-warehouse data-leak risks
+        \item Modeled core ERP domains using \textbf{Domain-Driven Design}, backing stock and \textbf{ledger entries} with ACID transactions and optimistic locking to keep records auditable, reconcilable, and consistent under concurrent operations
+        \item Designed RESTful service APIs and normalized relational schemas with strict referential integrity; applied partitioning and indexing on high-volume movement tables for predictable query latency as data grows
+        \item Built the \textbf{accounting and reconciliation logic} tying stock movements to financial ledger entries, guaranteeing that physical inventory and book value stay reconciled across every warehouse transfer
+        \item Implemented idempotent write paths and audit trails so that retried or duplicated requests never double-post inventory or financial records
+        \item Drove an \textbf{AI-augmented engineering workflow} (Claude Code) for automated requirement analysis, architecture review, and code review — increasing review throughput and defect-catch rate while standardizing code quality across the team
+        \item Collaborated with product and QA to translate ambiguous business rules into precise domain invariants, reducing back-and-forth and rework during delivery
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
@@ -30,63 +34,28 @@
 % --- LAMPART ---
 \begin{twocolentry}{\textit{Apr 2024 -- Dec 2025}}
     \textbf{LAMPART Co., Ltd.} \\[4pt]
-    \textit{Backend Engineer}
+    \textit{Backend Engineer — Real-time Messaging Platform}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Built and maintained backend services for a real-time internal chat platform (NodeJS), including a multilingual Translate Bot (Vietnamese--Japanese) with structured message normalization
-        \item \textbf{Optimized system performance} by reducing Redis Round-Trip Time (RTT) and eliminating critical data race conditions through distributed locking and atomic operations, improving throughput and stability
-        \item Re-architected the push-notification pipeline, migrating from the deprecated Google HTTP API to \textbf{Firebase Admin SDK} (NodeJS) with retry/back-off and delivery guarantees
-        \item Owned production stability: maintenance, debugging, and incident resolution for high-availability messaging services
+        \item Owned backend services for a production real-time chat platform (\textbf{NodeJS}, \textbf{Redis}, WebSockets) serving live, multi-tenant messaging traffic with high-availability requirements
+        \item \textbf{Cut Redis Round-Trip Time and eliminated critical data races} by introducing distributed locking, atomic pipelines, and access-pattern redesign — materially improving message throughput and tail latency under concurrent load
+        \item Re-architected the push-notification pipeline off the deprecated Google HTTP API onto \textbf{Firebase Admin SDK}, adding retry with exponential back-off and delivery guarantees to make notifications reliable at scale
+        \item Engineered a multilingual \textbf{Translate Bot} (Vietnamese--Japanese) integrated into the chat flow, with structured message normalization that preserves formatting, mentions, and context across languages
+        \item Designed and tuned the caching layer (Redis) for hot conversation state, reducing database load and keeping read paths fast during traffic spikes
+        \item Hardened the messaging stack for reliability: graceful reconnection, message ordering guarantees, and back-pressure handling on the WebSocket layer
+        \item Acted as production owner: led incident response, root-cause analysis, and post-mortems, then turned findings into monitoring and code fixes to sustain stability under growth
     \end{highlights}
 \end{onecolentry}
 
 
-\section{Projects}
-
-% --- Project 1: Fintech / Payments ---
-\begin{twocolentry}{\textit{Fintech · Personal}}
-    \textbf{Cryptofolio — Crypto Portfolio \& Payments Aggregator} \\[4pt]
-    \textit{\href{https://github.com/ah2909/cryptofolio}{github.com/ah2909/cryptofolio} · \href{https://landing.cryptofolio.io.vn}{landing.cryptofolio.io.vn}}
-\end{twocolentry}
+\section{Engineering Highlights}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Stack:} NodeJS, NextJS, Socket.io, MariaDB, Redis, Docker, AWS (EC2, RDS, ElastiCache), Vercel
-        \item Built a real-time financial aggregator that ingests transactions from multiple exchange APIs (\textbf{Binance, OKX, Bybit}) and computes \textbf{PnL}, cost basis, and historical balance with full transaction history
-        \item Designed a \textbf{payment/transaction reconciliation} engine to dedupe, normalize, and consistently aggregate asset movements across heterogeneous exchange sources, eliminating manual entry
-        \item Implemented secure \textbf{authentication}: JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted storage of API keys/secrets
-        \item Re-engineered the data-fetching layer for \textbf{concurrent} multi-exchange calls (native async), and added a \textbf{Redis} caching layer with rate-limit handling to cut response time and redundant outbound requests
-        \item Streamed live price/balance updates over \textbf{WebSockets} (Socket.io); shipped a \textbf{PWA} for a consistent cross-device experience
-        \item Operated on \textbf{AWS} (EC2 + RDS + ElastiCache); automated daily balance snapshots via cron and \textbf{CI/CD} via GitHub Actions
-    \end{highlights}
-\end{onecolentry}
-\vspace{0.2 cm}
-
-% --- Project 2: ERP / Accounting ---
-\begin{twocolentry}{\textit{ERP · 4 months}}
-    \textbf{OMS — Order Management \& Accounting System} \\[4pt]
-    \textit{\href{https://github.com/ah2909/OMS}{github.com/ah2909/OMS} · \href{https://orlist.vercel.app}{orlist.vercel.app}}
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item \textbf{Stack:} Spring Boot, NextJS, Redux, ChakraUI, MySQL, Docker, Vercel
-        \item Built an ERP-style platform covering the full \textbf{order-to-cash} flow: order creation, status lifecycle, \textbf{revenue \& cost accounting}, and profit/margin reporting
-        \item Designed RESTful APIs and a normalized relational schema for orders, products, employees, and financial transactions with referential integrity
-        \item Implemented \textbf{revenue statistics and cost-estimation} modules (aggregations, period reporting) to support business decision-making
-        \item Containerized services with Docker; deployed frontend on Vercel with API integration for seamless data flow
-    \end{highlights}
-\end{onecolentry}
-\vspace{0.2 cm}
-
-% --- Project 3: Reusable Auth Platform ---
-\begin{twocolentry}{\textit{Platform · 2 weeks}}
-    \textbf{Reusable JWT Authentication Service} \\[4pt]
-    \textit{\href{https://github.com/ah2909/auth-service}{github.com/ah2909/auth-service}}
-\end{twocolentry}
-\begin{onecolentry}
-    \begin{highlights}
-        \item \textbf{Stack:} NodeJS, MariaDB, Docker
-        \item Built a production-ready, drop-in \textbf{authentication microservice}: JWT with refresh-token rotation, Google OAuth2/OIDC, and secure session handling — a reusable foundation for new applications
+        \item \textbf{Fintech / payments:} built a real-time transaction aggregator integrating multiple exchange APIs (Binance, OKX, Bybit) with a \textbf{reconciliation engine} (dedupe, normalize, aggregate) computing PnL and cost basis from full transaction history — applying the same payment/ledger patterns used in production systems
+        \item \textbf{Secure auth at scale:} designed a reusable authentication service — JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted secret storage — used as a drop-in foundation across projects
+        \item \textbf{Concurrency \& performance:} re-engineered data-fetching for concurrent multi-source calls with Redis caching and rate-limit handling, cutting response time and redundant outbound requests
+        \item \textbf{Cloud-native ops:} deployed services on AWS (EC2, RDS, ElastiCache) with Dockerized workloads, scheduled jobs, and fully automated CI/CD via GitHub Actions
     \end{highlights}
 \end{onecolentry}
 
@@ -95,12 +64,12 @@
 \begin{onecolentry}
 \begin{highlights}
     \item \textbf{Languages:} Go, Java, TypeScript/JavaScript, Python, SQL
-    \item \textbf{Backend:} NodeJS (ExpressJS/NestJS), Spring Boot, REST, gRPC, GraphQL, WebSockets, microservices, Domain-Driven Design
+    \item \textbf{Backend:} NodeJS (Express/Nest), Spring Boot, REST, gRPC, GraphQL, WebSockets, microservices, Domain-Driven Design
     \item \textbf{Domain expertise:} Payments \& fintech (gateway integration, transaction reconciliation, double-entry ledgers, PnL), ERP \& accounting (order-to-cash, inventory, revenue/cost reporting), RBAC/ABAC authorization
-    \item \textbf{Data \& messaging:} MySQL, MariaDB, PostgreSQL, Redis, Kafka/RabbitMQ, event-driven \& CQRS, idempotency, distributed locking
+    \item \textbf{Data \& messaging:} MySQL, MariaDB, PostgreSQL, Redis, Kafka/RabbitMQ, event-driven \& CQRS, idempotency, distributed locking, schema design \& indexing
     \item \textbf{Cloud \& DevOps:} AWS (EC2, RDS, ElastiCache), Docker, Kubernetes, GitHub Actions, CI/CD, Nginx
-    \item \textbf{Observability \& quality:} structured logging, metrics, tracing, automated testing, API documentation (OpenAPI/Swagger)
-    \item \textbf{Security:} OAuth2/OIDC, JWT, secrets management, rate limiting, input validation
+    \item \textbf{Observability \& quality:} structured logging, metrics, distributed tracing, automated testing, API documentation (OpenAPI/Swagger)
+    \item \textbf{Security:} OAuth2/OIDC, JWT, secrets management, rate limiting, input validation, least-privilege access control
     \item \textbf{Frontend (working knowledge):} NextJS, VueJS, React
 \end{highlights}
 \end{onecolentry}
@@ -110,6 +79,6 @@
 \begin{onecolentry}
     \begin{highlights}
         \item English — IELTS 6.0 (2020)
-        \item Member, OISP Faculty Football Team — HCMUT (2020 -- 2023)
+        \item Member, OISP Faculty Football Team — Ho Chi Minh City University of Technology (2020 -- 2023)
     \end{highlights}
 \end{onecolentry}
