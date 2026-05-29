@@ -1,6 +1,6 @@
 \section{Summary}
 \begin{onecolentry}
-    Fullstack Developer with 2+ years of experience, primarily focused on backend development (Laravel, NodeJS) with working knowledge of frontend technologies (NextJS, VueJS). Experienced in real-time systems, cloud deployment (AWS, VPS), and containerization with Docker.
+    Backend Engineer with 2+ years of experience designing and operating high-throughput, distributed systems for \textbf{fintech/payments} and \textbf{ERP / order-management} domains. Strong in API design, event-driven architecture, data consistency, and cloud-native deployment. Comfortable owning a service end-to-end: from domain modeling and database design to observability, performance tuning, and CI/CD.
 \end{onecolentry}
 
 
@@ -14,77 +14,79 @@
 \section{Work Experience}
 
 % --- TMA Solutions (Current) ---
-\begin{twocolentry}{\textit{January 2026 -- Present}}
+\begin{twocolentry}{\textit{Jan 2026 -- Present}}
     \textbf{TMA Solutions} \\[4pt]
-    \textit{PHP Developer}
+    \textit{Backend Engineer}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Implemented warehouse-level authorization logic in Laravel, ensuring secure and accurate data management across multiple warehouses
-        \item Applied Claude Code into the development workflow to perform automated technical requirement analysis and code review, ensuring high code quality and architectural alignment
+        \item Designed and implemented \textbf{warehouse-level authorization} (RBAC/ABAC) for a multi-warehouse ERP, enforcing fine-grained row-level access control to guarantee secure, tenant-isolated inventory and accounting data
+        \item Modeled core ERP domains (inventory, stock movements, ledger entries) with transactional integrity, ensuring auditable and reconcilable records across warehouses
+        \item Embedded AI-assisted code review (Claude Code) into the development workflow for automated requirement analysis and architectural validation, raising code quality and review throughput
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
 
 % --- LAMPART ---
-\begin{twocolentry}{\textit{April 2024 -- December 2025}}
+\begin{twocolentry}{\textit{Apr 2024 -- Dec 2025}}
     \textbf{LAMPART Co., Ltd.} \\[4pt]
-    \textit{Junior Web Developer}
+    \textit{Backend Engineer}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item Integrated a Translate Bot into the internal chat application and ensured correct format of return messages to enhance multilingual communication (mostly Vietnamese-Japanese)
-        \item Optimized system performance by reducing Redis Round-Trip Time (RTT) and resolving critical data race conditions
-        \item Migrated push notification service from deprecated Google HTTP API to Firebase Admin SDK (NodeJS)
-        \item Performed maintenance and bug fixing for the internal chat application using Laravel and VueJs, ensuring system stability
+        \item Built and maintained backend services for a real-time internal chat platform (NodeJS), including a multilingual Translate Bot (Vietnamese--Japanese) with structured message normalization
+        \item \textbf{Optimized system performance} by reducing Redis Round-Trip Time (RTT) and eliminating critical data race conditions through distributed locking and atomic operations, improving throughput and stability
+        \item Re-architected the push-notification pipeline, migrating from the deprecated Google HTTP API to \textbf{Firebase Admin SDK} (NodeJS) with retry/back-off and delivery guarantees
+        \item Owned production stability: maintenance, debugging, and incident resolution for high-availability messaging services
     \end{highlights}
 \end{onecolentry}
 
 
 \section{Projects}
 
-% --- Project 1 ---
-\begin{twocolentry}{\textit{Personal project}}
-    \textbf{Crypto Portfolio Tracker} \\[4pt]
-    \textit{\href{https://github.com/ah2909/cryptofolio}{github.com/ah2909/cryptofolio}}
+% --- Project 1: Fintech / Payments ---
+\begin{twocolentry}{\textit{Fintech · Personal}}
+    \textbf{Cryptofolio — Crypto Portfolio \& Payments Aggregator} \\[4pt]
+    \textit{\href{https://github.com/ah2909/cryptofolio}{github.com/ah2909/cryptofolio} · \href{https://landing.cryptofolio.io.vn}{landing.cryptofolio.io.vn}}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Technologies:} NextJS, Laravel, NodeJS, Socket.io, MariaDB, Redis, Vercel, Docker
-        \item A real-time cryptocurrency portfolio aggregator that automatically syncs asset transactions from Binance, OKX, and Bybit APIs, providing a unified dashboard for PnL tracking and historical balance visualization (\href{https://landing.cryptofolio.io.vn}{landing.cryptofolio.io.vn})
-        \item Implemented JWT-based authentication (with token refresh) and Google login integration
-        \item Migrated data-fetching service from PHP to NodeJS to leverage native asynchronous processing, improving efficiency when calling multiple CEX APIs (Binance, OKX, Bybit) concurrently
-        \item Built a Progressive Web App (PWA) for a consistent user experience across devices
-        \item Reduced response time and minimized redundant calls to external crypto exchanges by integrating Redis cache
-        \item Deployed on VPS and AWS EC2 connected to RDS and Redis ElastiCache; automated daily balance snapshots via cron jobs and deployment via GitHub Actions
+        \item \textbf{Stack:} NodeJS, NextJS, Socket.io, MariaDB, Redis, Docker, AWS (EC2, RDS, ElastiCache), Vercel
+        \item Built a real-time financial aggregator that ingests transactions from multiple exchange APIs (\textbf{Binance, OKX, Bybit}) and computes \textbf{PnL}, cost basis, and historical balance with full transaction history
+        \item Designed a \textbf{payment/transaction reconciliation} engine to dedupe, normalize, and consistently aggregate asset movements across heterogeneous exchange sources, eliminating manual entry
+        \item Implemented secure \textbf{authentication}: JWT with refresh-token rotation, Google OAuth2/OIDC, and encrypted storage of API keys/secrets
+        \item Re-engineered the data-fetching layer for \textbf{concurrent} multi-exchange calls (native async), and added a \textbf{Redis} caching layer with rate-limit handling to cut response time and redundant outbound requests
+        \item Streamed live price/balance updates over \textbf{WebSockets} (Socket.io); shipped a \textbf{PWA} for a consistent cross-device experience
+        \item Operated on \textbf{AWS} (EC2 + RDS + ElastiCache); automated daily balance snapshots via cron and \textbf{CI/CD} via GitHub Actions
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
 
-% --- Project 2 ---
-\begin{twocolentry}{\textit{4 months}}
-    \textbf{Order Management System (OMS)} \\[4pt]
-    \textit{\href{https://github.com/ah2909/OMS}{github.com/ah2909/OMS}}
+% --- Project 2: ERP / Accounting ---
+\begin{twocolentry}{\textit{ERP · 4 months}}
+    \textbf{OMS — Order Management \& Accounting System} \\[4pt]
+    \textit{\href{https://github.com/ah2909/OMS}{github.com/ah2909/OMS} · \href{https://orlist.vercel.app}{orlist.vercel.app}}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Technologies:} NextJS, Redux, Spring Boot, ChakraUI, MySQL, Docker, Vercel
-        \item Developed a comprehensive web application to streamline order management, including order creation, status tracking, revenue statistics, and cost estimation (\href{https://orlist.vercel.app}{orlist.vercel.app})
-        \item Designed and implemented RESTful APIs using Spring Boot for managing orders, products, and employees
-        \item Developed the frontend using NextJS and ChakraUI, integrating APIs to ensure seamless data flow and user experience; deployed on Vercel
+        \item \textbf{Stack:} Spring Boot, NextJS, Redux, ChakraUI, MySQL, Docker, Vercel
+        \item Built an ERP-style platform covering the full \textbf{order-to-cash} flow: order creation, status lifecycle, \textbf{revenue \& cost accounting}, and profit/margin reporting
+        \item Designed RESTful APIs and a normalized relational schema for orders, products, employees, and financial transactions with referential integrity
+        \item Implemented \textbf{revenue statistics and cost-estimation} modules (aggregations, period reporting) to support business decision-making
+        \item Containerized services with Docker; deployed frontend on Vercel with API integration for seamless data flow
     \end{highlights}
 \end{onecolentry}
 \vspace{0.2 cm}
 
-% --- Project 3 ---
-\begin{twocolentry}{\textit{2 weeks}}
+% --- Project 3: Reusable Auth Platform ---
+\begin{twocolentry}{\textit{Platform · 2 weeks}}
     \textbf{Reusable JWT Authentication Service} \\[4pt]
     \textit{\href{https://github.com/ah2909/auth-service}{github.com/ah2909/auth-service}}
 \end{twocolentry}
 \begin{onecolentry}
     \begin{highlights}
-        \item \textbf{Technologies:} NodeJS, MariaDB, Docker
-        \item Developed a reusable authentication service template for rapid web application development, providing complete JWT-based authentication (with token refresh) and Google login integration as a foundation for building secure web applications
+        \item \textbf{Stack:} NodeJS, MariaDB, Docker
+        \item Built a production-ready, drop-in \textbf{authentication microservice}: JWT with refresh-token rotation, Google OAuth2/OIDC, and secure session handling — a reusable foundation for new applications
     \end{highlights}
 \end{onecolentry}
 
@@ -92,22 +94,22 @@
 \section{Technical Skills}
 \begin{onecolentry}
 \begin{highlights}
-    \item \textbf{Languages:} JavaScript, PHP, Python
-    \item \textbf{Frameworks:} Laravel, NodeJS (ExpressJS), VueJS, NextJS
-    \item \textbf{Databases:} MySQL, MariaDB, Redis
-    \item \textbf{Tools \& Technologies:} Docker, Git, GitHub Actions, Socket.io, AWS (EC2, RDS, ElastiCache), Firebase, Claude Code
-    \item \textbf{Others:} JWT Auth, REST APIs
+    \item \textbf{Languages:} Go, Java, TypeScript/JavaScript, Python, SQL
+    \item \textbf{Backend:} NodeJS (ExpressJS/NestJS), Spring Boot, REST, gRPC, GraphQL, WebSockets, microservices, Domain-Driven Design
+    \item \textbf{Domain expertise:} Payments \& fintech (gateway integration, transaction reconciliation, double-entry ledgers, PnL), ERP \& accounting (order-to-cash, inventory, revenue/cost reporting), RBAC/ABAC authorization
+    \item \textbf{Data \& messaging:} MySQL, MariaDB, PostgreSQL, Redis, Kafka/RabbitMQ, event-driven \& CQRS, idempotency, distributed locking
+    \item \textbf{Cloud \& DevOps:} AWS (EC2, RDS, ElastiCache), Docker, Kubernetes, GitHub Actions, CI/CD, Nginx
+    \item \textbf{Observability \& quality:} structured logging, metrics, tracing, automated testing, API documentation (OpenAPI/Swagger)
+    \item \textbf{Security:} OAuth2/OIDC, JWT, secrets management, rate limiting, input validation
+    \item \textbf{Frontend (working knowledge):} NextJS, VueJS, React
 \end{highlights}
 \end{onecolentry}
 
 
-\section{Certifications}
-\begin{twocolentry}{\textit{2020}}
-    \textbf{English IELTS 6.0}
-\end{twocolentry}
-
-
-\section{Activities}
-\begin{twocolentry}{\textit{2020 -- 2023}}
-    Member of the OISP Faculty Football team - Ho Chi Minh City University of Technology
-\end{twocolentry}
+\section{Certifications \& Activities}
+\begin{onecolentry}
+    \begin{highlights}
+        \item English — IELTS 6.0 (2020)
+        \item Member, OISP Faculty Football Team — HCMUT (2020 -- 2023)
+    \end{highlights}
+\end{onecolentry}

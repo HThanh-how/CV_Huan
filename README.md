@@ -4,7 +4,7 @@
 ![XeLaTeX](https://img.shields.io/badge/XeLaTeX-008080?style=for-the-badge)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-2088FF?style=for-the-badge&logo=github-actions&logoColor=white)
 
-Professional LaTeX-based resume for **Cao Anh Huân — Fullstack Developer**, with automated PDF generation via GitHub Actions.
+Professional LaTeX-based resume for **Cao Anh Huân — Backend Engineer**, with automated PDF generation via GitHub Actions.
 
 [📥 Download Latest PDF](https://github.com/HThanh-how/CV_Huan/releases/latest)
 
